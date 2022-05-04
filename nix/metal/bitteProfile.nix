@@ -2,7 +2,6 @@
   inputs,
   cell,
 }: let
-  inherit (inputs.bitte-cells) patroni cardano rabbit;
   inherit (inputs) nixpkgs;
 in {
   default = {
@@ -52,34 +51,17 @@ in {
         (
           lib.forEach
           (
-            # Infra node for cardano & patroni
             (eachRegion {
               instanceType = "t3.xlarge";
               volumeSize = 500;
-              modules =
-                defaultModules
-                ++ [
-                  (patroni.nixosProfiles.client "infra")
-                  rabbit.nixosProfiles.client
-                  {
-                    boot.kernelModules = ["softdog"];
-                    #
-                    # Watchdog events will be logged but not force the nomad client node to restart
-                    # Comment this line out to allow forced watchdog restarts
-                    # Patroni HA Postgres jobs will utilize watchdog and log additional info if it's available
-                    boot.extraModprobeConfig = "options softdog soft_noboot=1";
-                  }
-                ];
+              modules = defaultModules ++ [];
               node_class = "infra";
             })
             ++ (eachRegion {
               instanceType = "t3.2xlarge";
               volumeSize = 500;
               modules =
-                defaultModules
-                ++ [
-                  (cardano.nixosProfiles.client "infra")
-                ];
+                defaultModules ++ [];
               node_class = "infra";
             })
             ++
@@ -89,7 +71,7 @@ in {
                 region = "eu-central-1";
                 instanceType = "t3a.xlarge";
                 volumeSize = 500;
-                modules = defaultModules ++ [rabbit.nixosProfiles.client];
+                modules = defaultModules;
                 node_class = "development";
               }
             ]
@@ -178,19 +160,12 @@ in {
           subnet = cluster.vpc.subnets.core-2;
           volumeSize = 30;
           securityGroupRules = {inherit (sr) internet internal ssh http https routing;};
-          route53.domains = [
-            "*.${cluster.domain}"
-            "consul.${cluster.domain}"
-            "docker.${cluster.domain}"
-            "monitoring.${cluster.domain}"
-            "nomad.${cluster.domain}"
-            "vault.${cluster.domain}"
-          ];
+          route53.domains = ["*.${cluster.domain}"];
 
           modules = [
             (bitte + /profiles/routing.nix)
             {
-              services.oauth2_proxy.email.domains = ["iohk.io" "atixlabs.com"];
+              services.oauth2_proxy.email.domains = ["iohk.io"];
               services.traefik.acmeDnsCertMgr = false;
               services.traefik.useVaultBackend = true;
               services.traefik.useDockerRegistry = false;

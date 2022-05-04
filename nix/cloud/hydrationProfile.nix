@@ -2,9 +2,8 @@
   inputs,
   cell,
 }: let
-  inherit (inputs.bitte-cells) patroni cardano;
   namespaces = ["infra" "testnet-prod" "testnet-dev"];
-  components = ["database" "cardano-node" "db-sync" "wallet"];
+  components = ["database"];
 in {
   # Bitte Hydrate Module
   # -----------------------------------------------------------------------
@@ -30,38 +29,35 @@ in {
     starttimeSecretsPath = "kv/nomad-cluster";
     runtimeSecretsPath = "runtime";
   in {
-    imports = [
-      (patroni.hydrationProfiles.hydrate-cluster namespaces)
-      (cardano.hydrationProfiles.hydrate-cluster namespaces)
-    ];
     # NixOS-level hydration
     #
     # TODO: declare as proper tf hydration
     #
     # --------------
     cluster = {
-      name = "cardano";
+      name = "clockworks";
       adminNames = [
+        "shay.bergmann"
         "samuel.leathers"
         "david.arnold"
       ];
       developerGithubNames = [];
-      developerGithubTeamNames = ["cardano-devs"];
-      domain = "world.dev.cardano.org";
+      developerGithubTeamNames = ["devops"];
+      domain = "cw.iog.io";
       extraAcmeSANs = [];
-      kms = "arn:aws:kms:eu-central-1:052443713844:key/c1d7a205-5d3d-4ca7-8842-9f7fb2ccc847";
-      s3Bucket = "iog-cardano-bitte";
+      kms = "arn:aws:kms:eu-central-1:337774054819:key/abfae3d9-60ee-41ed-a89a-63078cd5ed5d";
+      s3Bucket = "iog-clockworks-bitte";
     };
     services = {
       grafana.provision.dashboards = [
         {
-          name = "provisioned-cardano";
+          name = "provisioned-clockworks";
           options.path = ./dashboards;
         }
       ];
       nomad.namespaces = {
-        testnet-prod.description = "Cardano (testnet prod)";
-        testnet-dev.description = "Cardano (testnet dev)";
+        testnet-prod.description = "Clockworks (testnet prod)";
+        testnet-dev.description = "Clockworks (testnet dev)";
         infra.description = "Painfully stateful stuff";
       };
     };

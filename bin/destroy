@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+TF_CONFIG=${1:-core}
+exec nix run .#clusters.$BITTE_CLUSTER.tf.$TF_CONFIG.terraform -- destroy -auto-approve

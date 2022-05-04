@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ -d ../bitte ]]; then
+    nix flake lock --override-input bitte path:../bitte
+fi
+
+TF_CONFIG=${1:-core}
+exec nix run .#clusters.$BITTE_CLUSTER.tf.$TF_CONFIG.plan

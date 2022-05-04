@@ -12,13 +12,6 @@
     # --- Auxiliaries ----------------------------------------------
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     capsules.url = "github:input-output-hk/devshell-capsules";
-    # --------------------------------------------------------------
-    # --- Bride Heads ----------------------------------------------
-    # TODO: remove when moved to monorepo
-    cardano-node.url = "github:input-output-hk/cardano-node";
-    cardano-db-sync.url = "github:input-output-hk/cardano-db-sync/12.0.1-flake-improvements";
-    cardano-wallet.url = "github:input-output-hk/cardano-wallet";
-    # --------------------------------------------------------------
   };
   outputs = inputs: let
     nomadEnvs = inputs.self.${system}.cloud.nomadEnvs;
