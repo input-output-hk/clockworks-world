@@ -31,7 +31,7 @@ in {
 
     nix = {
       binaryCaches = ["https://hydra.iohk.io"];
-      binaryCachePublicKeys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="];
+      binaryCachePublicKeys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0wEQ="];
     };
 
     cluster = {
@@ -51,20 +51,19 @@ in {
         (
           lib.forEach
           (
-            (eachRegion {
-              instanceType = "t3.xlarge";
-              volumeSize = 500;
-              modules = defaultModules ++ [];
-              node_class = "infra";
-            })
-            ++ (eachRegion {
-              instanceType = "t3.2xlarge";
-              volumeSize = 500;
-              modules =
-                defaultModules ++ [];
-              node_class = "infra";
-            })
-            ++
+            # (eachRegion {
+            #   instanceType = "t3.xlarge";
+            #   volumeSize = 500;
+            #   modules = defaultModules;
+            #   node_class = "infra";
+            # })
+            # ++ (eachRegion {
+            #   instanceType = "t3.2xlarge";
+            #   volumeSize = 500;
+            #   modules = defaultModules;
+            #   node_class = "infra";
+            # })
+            # ++
             # Development NodeClass -- only one node
             [
               {

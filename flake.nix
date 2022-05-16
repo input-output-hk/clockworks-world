@@ -6,12 +6,13 @@
   inputs.data-merge.url = "github:divnix/data-merge";
   inputs = {
     # --- Bitte Stack ----------------------------------------------
-    bitte.url = "github:input-output-hk/bitte";
+    bitte.url = "github:input-output-hk/bitte/develop";
     bitte-cells.url = "github:input-output-hk/bitte-cells";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     capsules.url = "github:input-output-hk/devshell-capsules";
+    capsules.inputs.bitte.follows = "bitte";
   };
   outputs = inputs: let
     nomadEnvs = inputs.self.${system}.cloud.nomadEnvs;
@@ -46,12 +47,14 @@
           domain = "cw.iog.io";
           bitteProfile = inputs.self.${system}.metal.bitteProfile.default;
           hydrationProfile = inputs.self.${system}.cloud.hydrationProfile.default;
-          deploySshKey = "./secrets/ssh-cw";
+          deploySshKey = "./secrets/ssh-clockworks";
         }
     ) {
+
       infra = inputs.bitte.lib.mkNomadJobs "infra" nomadEnvs;
-      testnet-prod = inputs.bitte.lib.mkNomadJobs "testnet-prod" nomadEnvs;
-      testnet-dev = inputs.bitte.lib.mkNomadJobs "testnet-dev" nomadEnvs;
+      matomo = inputs.bitte.lib.mkNomadJobs "matomo" nomadEnvs;
+      kroki = inputs.bitte.lib.mkNomadJobs "kroki" nomadEnvs;
+      ae-dir = inputs.bitte.lib.mkNomadJobs "ae-dir" nomadEnvs;
     };
   # --- Flake Local Nix Configuration ----------------------------
   nixConfig = {

@@ -2,7 +2,7 @@
   inputs,
   cell,
 }: let
-  namespaces = ["infra" "testnet-prod" "testnet-dev"];
+  namespaces = ["infra" "matomo" "kroki" "ae-dir"];
   components = ["database"];
 in {
   # Bitte Hydrate Module
@@ -38,8 +38,6 @@ in {
       name = "clockworks";
       adminNames = [
         "shay.bergmann"
-        "samuel.leathers"
-        "david.arnold"
       ];
       developerGithubNames = [];
       developerGithubTeamNames = ["devops"];
@@ -56,35 +54,24 @@ in {
         }
       ];
       nomad.namespaces = {
-        testnet-prod.description = "Clockworks (testnet prod)";
-        testnet-dev.description = "Clockworks (testnet dev)";
         infra.description = "Painfully stateful stuff";
+        matomo.description = "Matomo";
+        kroki.description = "Kroki";
+        ae-dir.description = "AE Dir";
       };
     };
     # cluster level
     # --------------
     tf.hydrate-cluster.configuration = {
       locals.policies = {
-        consul.developer.service_prefix."testnet-" = {
+        consul.developer.service_prefix."*" = {
           policy = "write";
           intentions = "write";
         };
 
-        nomad.admin.namespace."*".policy = "write";
-        nomad.admin.host_volume."infra-*".policy = "write";
+        nomad.developer.host_volume."*".policy = "write";
 
-        nomad.developer.namespace.testnet-prod = {
-          policy = "write";
-          capabilities = [
-            "submit-job"
-            "dispatch-job"
-            "read-logs"
-            "alloc-exec"
-            "alloc-node-exec"
-            "alloc-lifecycle"
-          ];
-        };
-        nomad.developer.namespace.testnet-dev = {
+        nomad.developer.namespace."*" = {
           policy = "write";
           capabilities = [
             "submit-job"
@@ -96,8 +83,24 @@ in {
           ];
         };
 
-        nomad.developer.host_volume."testnet-prod-*".policy = "write";
-        nomad.developer.host_volume."testnet-dev-*".policy = "write";
+        consul.admin.service_prefix."*" = {
+          policy = "write";
+          intentions = "write";
+        };
+
+        nomad.admin.host_volume."*".policy = "write";
+
+        nomad.admin.namespace."*" = {
+          policy = "write";
+          capabilities = [
+            "submit-job"
+            "dispatch-job"
+            "read-logs"
+            "alloc-exec"
+            "alloc-node-exec"
+            "alloc-lifecycle"
+          ];
+        };
       };
     };
     # application secrets
