@@ -45,7 +45,7 @@
           maintainers = with teams; iog.members;
           inherit (jre.meta) platforms;
         };
-      }
+      };
 in {
   default = nixpkgs.callPackage kroki {};
 }
