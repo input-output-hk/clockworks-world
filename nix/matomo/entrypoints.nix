@@ -12,10 +12,9 @@
     daemonize = no
 
     [matomo]
+    user = matomo
+    group = matomo
     listen = 127.0.0.1:9000
-    listen.owner = root
-    listen.group = root
-    listen.mode = 0660
     pm = dynamic
     pm.max_children = 75
     pm.start_servers = 10
