@@ -2,18 +2,17 @@
   inputs,
   cell,
 }: let
-  inherit (inputs) data-merge;
-  inherit (inputs.bitte-cells) cardano patroni vector;
-  inherit (cell) constants;
+  inherit (inputs.bitte-cells) vector;
+in {
+  prod = {
+    database = import ./mysql {
+      inherit inputs cell;
+      inherit (constants.args.prod) domain namespace;
+    };
 
-  mkComponents = args: {
+    matomo = import ./matomo {
+      inherit inputs cell;
+      inherit (constants.args.prod) domain namespace;
+    };
   };
-
-  # Components per environment
-  # -----------------------------------------------------------------------
-  testnet-prod = mkComponents constants.envs.prod;
-  testnet-dev = mkComponents constants.envs.dev;
-  # testnet-staging = mkComponents constants.envs.staging;
-in
-  with data-merge; {
-  }
+}
