@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-nix run .\#x86_64-linux.matomo.oci-images.matomo.copyToDockerDaemon
-image=$(nix eval --raw .\#x86_64-linux.matomo.oci-images.matomo --apply '(i: "${i.imageName}:${i.imageTag}")')
+set -e
+
+app=$1
+shift
+
+nix run .\#x86_64-linux.$app.oci-images.$app.copyToDockerDaemon
+image=$(nix eval --raw .\#x86_64-linux.$app.oci-images.$app --apply '(i: "${i.imageName}:${i.imageTag}")')
 exec docker run --rm -it $image "$@"

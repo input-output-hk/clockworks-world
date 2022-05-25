@@ -9,9 +9,6 @@
 
   buildDebugImage = ep: o: n2c.buildImage (_utils.library.mkDebugOCI ep o);
 
-  tmp = nixpkgs.runCommand "tmp" {} ''
-    mkdir -p $out/tmp
-  '';
 in {
   kroki = buildDebugImage entrypoints.kroki {
     name = "registry.ci.iog.io/kroki";
