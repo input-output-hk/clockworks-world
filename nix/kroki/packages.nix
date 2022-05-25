@@ -10,7 +10,7 @@
     writePython3Application
     ;
 
-    kroki =
+    package =
       { lib
       , stdenv
       , fetchurl
@@ -46,6 +46,7 @@
           inherit (jre.meta) platforms;
         };
       };
-in {
-  default = nixpkgs.callPackage kroki {};
+in rec {
+  kroki = nixpkgs.callPackage package {};
+  default = kroki;
 }
