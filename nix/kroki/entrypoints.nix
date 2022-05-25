@@ -5,7 +5,6 @@
   inherit (inputs) nixpkgs;
   inherit (inputs.bitte-cells._writers.library) writeShellApplication;
   inherit (cell) packages;
-
 in {
   kroki = writeShellApplication {
     name = "entrypoint";

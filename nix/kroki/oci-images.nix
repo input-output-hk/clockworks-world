@@ -8,7 +8,6 @@
   n2c = inputs.n2c.packages.nix2container;
 
   buildDebugImage = ep: o: n2c.buildImage (_utils.library.mkDebugOCI ep o);
-
 in {
   kroki = buildDebugImage entrypoints.kroki {
     name = "registry.ci.iog.io/kroki";
@@ -17,11 +16,13 @@ in {
       (n2c.buildLayer {deps = [packages.kroki];})
     ];
     contents = [nixpkgs.iana-etc];
-    config.Env = [ "PATH=${nixpkgs.lib.makeBinPath [
-      nixpkgs.bashInteractive
-      nixpkgs.coreutils
-      entrypoints.kroki
-    ]}"];
+    config.Env = [
+      "PATH=${nixpkgs.lib.makeBinPath [
+        nixpkgs.bashInteractive
+        nixpkgs.coreutils
+        entrypoints.kroki
+      ]}"
+    ];
     config.Cmd = [
       "${entrypoints.kroki}/bin/entrypoint"
     ];

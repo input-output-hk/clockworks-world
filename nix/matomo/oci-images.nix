@@ -39,12 +39,14 @@ in {
       etc
       nixpkgs.iana-etc
     ];
-    config.Env = [ "PATH=${nixpkgs.lib.makeBinPath [
-      nixpkgs.bashInteractive
-      nixpkgs.coreutils
-      entrypoints.matomo
-      nixpkgs.strace
-    ]}" ];
+    config.Env = [
+      "PATH=${nixpkgs.lib.makeBinPath [
+        nixpkgs.bashInteractive
+        nixpkgs.coreutils
+        entrypoints.matomo
+        nixpkgs.strace
+      ]}"
+    ];
     config.Cmd = [
       "${entrypoints.matomo}/bin/entrypoint"
     ];

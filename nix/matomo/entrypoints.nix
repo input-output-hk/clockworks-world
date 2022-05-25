@@ -25,16 +25,17 @@
     env[PIWIK_USER_PATH] = /alloc/matomo
   '';
 
-  iniFile = nixpkgs.runCommand "php.ini" {
-    phpOptions = ''
-      error_log = 'stderr'
-      log_errors = on
+  iniFile =
+    nixpkgs.runCommand "php.ini" {
+      phpOptions = ''
+        error_log = 'stderr'
+        log_errors = on
+      '';
+      preferLocalBuild = true;
+      passAsFile = ["phpOptions"];
+    } ''
+      cat ${nixpkgs.php}/etc/php.ini $phpOptionsPath > $out
     '';
-    preferLocalBuild = true;
-    passAsFile = [ "phpOptions" ];
-  } ''
-    cat ${nixpkgs.php}/etc/php.ini $phpOptionsPath > $out
-  '';
 in {
   matomo = writeShellApplication {
     name = "entrypoint";

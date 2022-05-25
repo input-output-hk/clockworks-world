@@ -50,7 +50,6 @@
           deploySshKey = "./secrets/ssh-clockworks";
         }
     ) {
-
       infra = inputs.bitte.lib.mkNomadJobs "infra" nomadEnvs;
       matomo = inputs.bitte.lib.mkNomadJobs "matomo" nomadEnvs;
       kroki = inputs.bitte.lib.mkNomadJobs "kroki" nomadEnvs;
