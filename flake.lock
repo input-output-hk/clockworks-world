@@ -216,11 +216,11 @@
         "vulnix": "vulnix"
       },
       "locked": {
-        "lastModified": 1654010632,
-        "narHash": "sha256-5sap7fW2bxKMns7zkj7exUMFnesBre9IdTj0mmn4CTA=",
+        "lastModified": 1654010707,
+        "narHash": "sha256-QYX8kzKnRb8+hIFpz5vpkuxZcJ5zbqmEOZTf2HTJnJY=",
         "owner": "input-output-hk",
         "repo": "bitte",
-        "rev": "dc059e54f50ebd80ae357747dc80a155a92623b7",
+        "rev": "f5f64fbe0eaee2b36d017f46358ba8264a6148ef",
         "type": "github"
       },
       "original": {
