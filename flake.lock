@@ -243,15 +243,16 @@
         "std": "std"
       },
       "locked": {
-        "lastModified": 1652793530,
-        "narHash": "sha256-It37xcUM+ej7lSxbjdq2srKSHGwVHp1v4xp3TLPp1U4=",
+        "lastModified": 1654096129,
+        "narHash": "sha256-QCKlGs1wPVdvTkuDky2mBRpqnAi6XaOlGIaCdrC0ys8=",
         "owner": "input-output-hk",
         "repo": "bitte-cells",
-        "rev": "13ce5450a071a5ba4353d66d3e5e2137622bfe2c",
+        "rev": "feb9c7b3e9daa624470beb3657f3e85f11b0b5f7",
         "type": "github"
       },
       "original": {
         "owner": "input-output-hk",
+        "ref": "mariadb",
         "repo": "bitte-cells",
         "type": "github"
       }
