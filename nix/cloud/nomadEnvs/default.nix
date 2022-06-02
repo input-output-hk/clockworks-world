@@ -1,18 +1,15 @@
 {
   inputs,
   cell,
-}: let
-  inherit (inputs.bitte-cells) vector;
-in {
-  prod = {
-    database = import ./mysql {
-      inherit inputs cell;
-      inherit (constants.args.prod) domain namespace;
-    };
+}: {
+  infra = {
+    database = inputs.bitte-cells.mariadb.nomadJob.default cell.constants.infra;
+  };
 
+  prod = {
     matomo = import ./matomo {
       inherit inputs cell;
-      inherit (constants.args.prod) domain namespace;
+      inherit (cell.constants.prod) domain namespace;
     };
   };
 }

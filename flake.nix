@@ -6,8 +6,9 @@
   inputs.data-merge.url = "github:divnix/data-merge";
   inputs = {
     # --- Bitte Stack ----------------------------------------------
+    # bitte.url = "github:input-output-hk/bitte/zfs-master";
     bitte.url = "github:input-output-hk/bitte/develop";
-    bitte-cells.url = "github:input-output-hk/bitte-cells";
+    bitte-cells.url = "github:input-output-hk/bitte-cells/mariadb";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -38,22 +39,16 @@
       ];
     }
     # soil (TODO: eat up soil)
-    (
-      let
-      in
-        inputs.bitte.lib.mkBitteStack {
-          inherit inputs;
-          inherit (inputs) self;
-          domain = "cw.iog.io";
-          bitteProfile = inputs.self.${system}.metal.bitteProfile.default;
-          hydrationProfile = inputs.self.${system}.cloud.hydrationProfile.default;
-          deploySshKey = "./secrets/ssh-clockworks";
-        }
-    ) {
+    (inputs.bitte.lib.mkBitteStack {
+      inherit inputs;
+      inherit (inputs) self;
+      domain = "cw.iog.io";
+      bitteProfile = inputs.self.${system}.metal.bitteProfile.default;
+      hydrationProfile = inputs.self.${system}.cloud.hydrationProfile.default;
+      deploySshKey = "./secrets/ssh-clockworks";
+    }) {
       infra = inputs.bitte.lib.mkNomadJobs "infra" nomadEnvs;
-      matomo = inputs.bitte.lib.mkNomadJobs "matomo" nomadEnvs;
-      kroki = inputs.bitte.lib.mkNomadJobs "kroki" nomadEnvs;
-      ae-dir = inputs.bitte.lib.mkNomadJobs "ae-dir" nomadEnvs;
+      prod = inputs.bitte.lib.mkNomadJobs "prod" nomadEnvs;
     };
   # --- Flake Local Nix Configuration ----------------------------
   nixConfig = {

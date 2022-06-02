@@ -22,7 +22,7 @@
     pkgs,
     ...
   }: {
-    name = nixpkgs.lib.mkForce "Cardano World";
+    name = nixpkgs.lib.mkForce "Clockworks World";
     imports = [
       std.devshellProfiles.default
       bitte.devshellModule
@@ -30,7 +30,7 @@
     bitte = {
       domain = "cw.iog.io";
       cluster = "clockworks";
-      namespace = "cw-prod";
+      namespace = "prod";
       provider = "AWS";
       cert = null;
       aws_profile = "clockworks";

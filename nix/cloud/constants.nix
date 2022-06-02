@@ -1,17 +1,14 @@
 {
   inputs,
   cell,
-}: let
-  # Metadata
-  # -----------------------------------------------------------------------
-  baseDomain = "cw.iog.io";
-in {
-  # App Components
-  # -----------------------------------------------------------------------
-  envs = {
+}:
+{
+  infra = {
+    namespace = "infra";
+    datacenters = [ "eu-central-1" ];
   };
-  testnet-prod = {
-  };
-  testnet-dev = {
+  prod = {
+    domain = "cw.iog.io";
+    namespace = "prod";
   };
 }
