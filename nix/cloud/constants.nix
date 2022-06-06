@@ -1,11 +1,10 @@
 {
   inputs,
   cell,
-}:
-{
+}: {
   infra = {
     namespace = "infra";
-    datacenters = [ "eu-central-1" ];
+    datacenters = ["eu-central-1"];
   };
   prod = {
     domain = "cw.iog.io";
