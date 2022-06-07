@@ -39,7 +39,7 @@ in {
       flakePath = "${inputs.self}";
 
       autoscalingGroups = let
-        defaultModules = [(bitte + "/profiles/client.nix")];
+        defaultModules = [bitte.profiles.client];
 
         eachRegion = attrs: [
           (attrs // {region = "eu-central-1";})

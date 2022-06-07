@@ -1,7 +1,7 @@
 {
   inputs,
   cell,
-}: {
+} @ args: {
   infra = {
     database = inputs.bitte-cells.mariadb.nomadJob.default cell.constants.infra;
   };
@@ -11,6 +11,6 @@
     #   inherit inputs cell;
     #   inherit (cell.constants.prod) namespace;
     # };
-    matomo = inputs.cells.matomo.jobs.default cell.constants.prod;
+    matomo = import ./matomo cell.constants.prod;
   };
 }
