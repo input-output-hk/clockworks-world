@@ -9,5 +9,6 @@
   prod = {
     domain = "cw.iog.io";
     namespace = "prod";
+    datacenters = ["eu-central-1"];
   };
 }

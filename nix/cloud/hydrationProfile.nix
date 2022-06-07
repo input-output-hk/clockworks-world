@@ -53,15 +53,20 @@
     # cluster level
     # --------------
     tf.hydrate-cluster.configuration = {
+
       locals.policies = {
-        consul.admin.service_prefix."*" = {
+        consul.developer.service_prefix."*" = {
           policy = "write";
           intentions = "write";
         };
 
-        nomad.admin.host_volume."*".policy = "write";
+        nomad.admin = {
+          namespace."*".policy = "write";
+          host_volume."*".policy = "write";
+        };
 
-        nomad.admin.namespace."*" = {
+        nomad.developer.host_volume."*".policy = "write";
+        nomad.developer.namespace."*" = {
           policy = "write";
           capabilities = [
             "submit-job"

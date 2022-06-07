@@ -7,10 +7,10 @@
     datacenters,
     ...
   }: {
-    job.mariadb = {
+    job.matomo = {
       inherit datacenters namespace;
 
-      group.mysql = {
+      group.matomo = {
         restart = {
           attempts = 5;
           delay = "10s";
@@ -25,30 +25,13 @@
           unlimited = true;
         };
 
-        network.port.mysql.to = "3306";
-
-        service = [
-          {
-            name = "mysql";
-            address_mode = "auto";
-            port = "mysql";
-            check = [
-              {
-                type = "tcp";
-                port = "mysql";
-                interval = "10s";
-                timeout = "2s";
-              }
-            ];
-          }
-        ];
-
-        task.mysql = {
+        task.matomo = {
           driver = "docker";
 
           config = {
             image = "registry.ci.iog.io/matomo";
             # ports = ["mysql"];
+            # command = "mysqld";
           };
 
           resources = {
@@ -58,15 +41,15 @@
 
           vault.policies = ["nomad-cluster"];
 
-          template = [
-            {
-              env = true;
-              destination = "secrets/mysql";
-              data = ''
-                MARIADB_ROOT_PASSWORD={{with secret "kv/data/nomad-cluster/mysql-root"}}{{.Data.data.password}}{{end}}
-              '';
-            }
-          ];
+          # template = [
+          #   {
+          #     env = true;
+          #     destination = "secrets/mysql";
+          #     data = ''
+          #       MARIADB_ROOT_PASSWORD={{with secret "kv/data/nomad-cluster/mysql-root"}}{{.Data.data.password}}{{end}}
+          #     '';
+          #   }
+          # ];
         };
       };
     };
