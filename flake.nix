@@ -5,8 +5,7 @@
   inputs.data-merge.url = "github:divnix/data-merge";
   inputs = {
     # --- Bitte Stack ----------------------------------------------
-    # bitte.url = "github:input-output-hk/bitte/zfs-master";
-    bitte.url = "github:input-output-hk/bitte/kreisys-wip";
+    bitte.url = "github:input-output-hk/bitte";
     bitte-cells.url = "github:input-output-hk/bitte-cells/mariadb";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------

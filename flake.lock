@@ -337,16 +337,15 @@
         "vulnix": "vulnix_2"
       },
       "locked": {
-        "lastModified": 1654546881,
-        "narHash": "sha256-94FPQdyKPnY0McETq/34bDz1Sby5KCw/U3YQZvPHoEs=",
+        "lastModified": 1655498376,
+        "narHash": "sha256-KeCNOgbr/+2rUXrbnRkCUWdNgqd8jFTi6GObZS0DOKk=",
         "owner": "input-output-hk",
         "repo": "bitte",
-        "rev": "221ceed186c6386719798752a452bcf59e8dd045",
+        "rev": "515bd01ca4488e1ccbe6d9b84ae35ad571e30267",
         "type": "github"
       },
       "original": {
         "owner": "input-output-hk",
-        "ref": "kreisys-wip",
         "repo": "bitte",
         "type": "github"
       }
@@ -3841,16 +3840,16 @@
     },
     "nixpkgs_21": {
       "locked": {
-        "lastModified": 1654360807,
-        "narHash": "sha256-wYG86PUkPZ1P/oHsCpepTkb/U26poaEPPp1XFjRsgdA=",
-        "owner": "nixos",
+        "lastModified": 1652559422,
+        "narHash": "sha256-jPVTNImBTUIFdtur+d4IVot6eXmsvtOcBm0TzxmhWPk=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d9794b04bffb468b886c553557489977ae5f4c65",
+        "rev": "8b3398bc7587ebb79f93dfeea1b8c574d3c6dba1",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.05",
+        "ref": "nixos-21.11",
         "repo": "nixpkgs",
         "type": "github"
       }
