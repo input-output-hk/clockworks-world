@@ -51,15 +51,8 @@
     };
   # --- Flake Local Nix Configuration ----------------------------
   nixConfig = {
-    extra-substituters = [
-      # TODO: spongix
-      "s3://iog-clockworks-bitte/infra/binary-cache"
-      "https://hydra.iohk.io"
-    ];
-    extra-trusted-public-keys = [
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      "clockworks-0:J4I9fxe42ZZB0UbqWmzmWRkL5tj+2XmXPVTJX5OL0E0="
-    ];
+    extra-substituters = ["https://cache.iog.io"];
+    extra-trusted-public-keys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="];
     # post-build-hook = "./upload-to-cache.sh";
     allow-import-from-derivation = "true";
   };
