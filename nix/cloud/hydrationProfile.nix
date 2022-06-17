@@ -10,21 +10,13 @@
     lib,
     config,
     terralib,
+    bittelib,
     ...
   }: let
     inherit (terralib) allowS3For;
     bucketArn = "arn:aws:s3:::${config.cluster.s3Bucket}";
     allowS3ForBucket = allowS3For bucketArn;
     inherit (terralib) var id;
-    c = "create";
-    r = "read";
-    u = "update";
-    d = "delete";
-    l = "list";
-    s = "sudo";
-    secretsFolder = "encrypted";
-    starttimeSecretsPath = "kv/nomad-cluster";
-    runtimeSecretsPath = "runtime";
   in {
     # NixOS-level hydration
     #
@@ -77,6 +69,26 @@
             "alloc-lifecycle"
           ];
         };
+      };
+    };
+    # application state (terraform)
+    # -----------------------------
+    tf.hydrate-app.configuration = let
+      vault' = {
+        dir = ./. + "/kv/vault";
+        prefix = "kv";
+      };
+      consul' = {
+        dir = ./. + "/kv/consul";
+        prefix = "config";
+      };
+      vault = bittelib.mkVaultResources {inherit (vault') dir prefix;};
+      consul = bittelib.mkConsulResources {inherit (consul') dir prefix;};
+    in {
+      data = {inherit (vault) sops_file;};
+      resource = {
+        inherit (vault) vault_generic_secret;
+        inherit (consul) consul_keys;
       };
     };
   };
