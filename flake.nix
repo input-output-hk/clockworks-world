@@ -1,7 +1,6 @@
 {
-  description = "Cardano World";
+  description = "ClockWorks";
   inputs.std.url = "github:divnix/std";
-  inputs.std.inputs.nixpkgs.follows = "nixpkgs";
   inputs.n2c.url = "github:nlewo/nix2container";
   inputs.data-merge.url = "github:divnix/data-merge";
   inputs = {
