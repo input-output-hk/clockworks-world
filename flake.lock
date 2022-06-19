@@ -337,11 +337,11 @@
         "vulnix": "vulnix_2"
       },
       "locked": {
-        "lastModified": 1655498376,
-        "narHash": "sha256-KeCNOgbr/+2rUXrbnRkCUWdNgqd8jFTi6GObZS0DOKk=",
+        "lastModified": 1655508682,
+        "narHash": "sha256-p5KZoiRbpsPEgyqW27KK5B3GYmJlZOOlVNAbCNH0RKQ=",
         "owner": "input-output-hk",
         "repo": "bitte",
-        "rev": "515bd01ca4488e1ccbe6d9b84ae35ad571e30267",
+        "rev": "150793e950d1ef8c1cc5c101c117ed2bc5f0a09a",
         "type": "github"
       },
       "original": {

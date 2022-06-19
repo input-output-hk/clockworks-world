@@ -25,7 +25,7 @@
     # --------------
     cluster = {
       name = "clockworks";
-      adminNames = ["shay.bergmann"];
+      adminNames = ["shay.bergmann" "david.arnold"];
       domain = "cw.iog.io";
       kms = "arn:aws:kms:eu-central-1:337774054819:key/abfae3d9-60ee-41ed-a89a-63078cd5ed5d";
       s3Bucket = "iog-clockworks-bitte";
@@ -45,7 +45,6 @@
     # cluster level
     # --------------
     tf.hydrate-cluster.configuration = {
-
       locals.policies = {
         consul.developer.service_prefix."*" = {
           policy = "write";
