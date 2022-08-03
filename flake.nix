@@ -24,6 +24,8 @@
       organelles = [
         (inputs.std.data "nomadEnvs")
         (inputs.std.data "constants")
+        (inputs.std.data "alerts")
+        (inputs.std.data "dashboards")
         (inputs.std.functions "bitteProfile")
         (inputs.std.functions "oci-images")
         (inputs.std.installables "packages")
