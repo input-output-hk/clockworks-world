@@ -5,7 +5,7 @@
   # Bitte Hydrate Module
   # -----------------------------------------------------------------------
   #
-  # reconcile with: `nix run .#clusters.[...].tf.[app-|secrets-]hydrate.(plan/apply)`
+  # reconcile with: `nix run .#clusters.[...].tf.hydrate-[cluster|app].(plan/apply)`
   default = {
     lib,
     config,
@@ -19,9 +19,6 @@
     inherit (terralib) var id;
   in {
     # NixOS-level hydration
-    #
-    # TODO: declare as proper tf hydration
-    #
     # --------------
     cluster = {
       name = "clockworks";
@@ -30,6 +27,7 @@
       kms = "arn:aws:kms:eu-central-1:337774054819:key/abfae3d9-60ee-41ed-a89a-63078cd5ed5d";
       s3Bucket = "iog-clockworks-bitte";
     };
+
     services = {
       grafana.provision.dashboards = [
         {
@@ -42,6 +40,7 @@
         prod.description = "Production services";
       };
     };
+
     # cluster level
     # --------------
     tf.hydrate-cluster.configuration = {
@@ -70,6 +69,7 @@
         };
       };
     };
+
     # application state (terraform)
     # -----------------------------
     tf.hydrate-app.configuration = let
