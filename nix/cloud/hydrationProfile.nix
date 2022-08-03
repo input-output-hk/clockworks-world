@@ -5,23 +5,15 @@
   # Bitte Hydrate Module
   # -----------------------------------------------------------------------
   #
-  # reconcile with: `nix run .#clusters.[...].tf.[app-|secrets-]hydrate.(plan/apply)`
+  # reconcile with: `nix run .#clusters.[...].tf.hydrate-[cluster|app].(plan/apply)`
   default = {
     lib,
     config,
-    terralib,
     bittelib,
     ...
   }: let
-    inherit (terralib) allowS3For;
-    bucketArn = "arn:aws:s3:::${config.cluster.s3Bucket}";
-    allowS3ForBucket = allowS3For bucketArn;
-    inherit (terralib) var id;
   in {
     # NixOS-level hydration
-    #
-    # TODO: declare as proper tf hydration
-    #
     # --------------
     cluster = {
       name = "clockworks";
@@ -30,18 +22,14 @@
       kms = "arn:aws:kms:eu-central-1:337774054819:key/abfae3d9-60ee-41ed-a89a-63078cd5ed5d";
       s3Bucket = "iog-clockworks-bitte";
     };
+
     services = {
-      grafana.provision.dashboards = [
-        {
-          name = "provisioned-clockworks";
-          options.path = ./dashboards;
-        }
-      ];
       nomad.namespaces = {
         infra.description = "Painfully stateful stuff";
         prod.description = "Production services";
       };
     };
+
     # cluster level
     # --------------
     tf.hydrate-cluster.configuration = {
@@ -70,6 +58,73 @@
         };
       };
     };
+
+    # Observability State
+    # --------------
+    tf.hydrate-monitoring.configuration = {
+      resource =
+        inputs.bitte-cells._utils.library.mkMonitoring
+        # Alert attrset
+        {
+          # Organelle local declared dashboards
+          inherit
+            # (cell.alerts)
+            # clockworks-example-alerts
+
+            # Upstream alerts which may have downstream deps can be imported here
+            ;
+
+          # Upstream alerts not having downstream deps can be directly imported here
+          inherit
+            (inputs.bitte-cells.bitte.alerts)
+            bitte-consul
+            bitte-deadmanssnitch
+            bitte-loki
+            bitte-system
+            bitte-vault
+            bitte-vm-health
+            bitte-vm-standalone
+            bitte-vmagent
+            ;
+
+          # Patroni not currently used in clockworks
+          # inherit
+          #   (inputs.bitte-cells.patroni.alerts)
+          #   bitte-cells-patroni
+          #   ;
+        }
+        # Dashboard attrset
+        {
+          # Organelle local declared dashboards
+          inherit
+            # (cell.dashboards)
+            # clockworks-example-dash
+            ;
+
+          # Upstream dashboards not having downstream deps can be directly imported here
+          inherit
+            (inputs.bitte-cells.bitte.dashboards)
+            bitte-consul
+            bitte-log
+            bitte-loki
+            bitte-nomad
+            bitte-system
+            bitte-traefik
+            bitte-vault
+            bitte-vmagent
+            bitte-vmalert
+            bitte-vm
+            bitte-vulnix
+            ;
+
+          # Patroni not currently used in clockworks
+          # inherit
+          #   (inputs.bitte-cells.patroni.dashboards)
+          #   bitte-cells-patroni
+          #   ;
+        };
+    };
+
     # application state (terraform)
     # -----------------------------
     tf.hydrate-app.configuration = let

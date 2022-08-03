@@ -9,7 +9,7 @@
     bitte-cells.url = "github:input-output-hk/bitte-cells/mariadb";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.follows = "bitte/nixpkgs";
     capsules.url = "github:input-output-hk/devshell-capsules";
     capsules.inputs.bitte.follows = "bitte";
   };
@@ -24,6 +24,8 @@
       organelles = [
         (inputs.std.data "nomadEnvs")
         (inputs.std.data "constants")
+        (inputs.std.data "alerts")
+        (inputs.std.data "dashboards")
         (inputs.std.functions "bitteProfile")
         (inputs.std.functions "oci-images")
         (inputs.std.installables "packages")
