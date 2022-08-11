@@ -1,13 +1,15 @@
-{
-  inputs,
-  cell,
-}: let
+{ inputs
+, cell
+,
+}:
+let
   # Since dashboards will exist as either JSON already, or will
   # be converted to JSON from Nix (ex: Grafonnix), dashboard attrs
   # are expected to have values of JSON strings.
   importAsJson = file: builtins.readFile file;
   # importGrafonnixToJson = ...;
-in {
+in
+{
   # See examples of custom defined dashboards, ex: at bitte-cells repo
   # clockworks = importAsJson ./dashboards/clockworks.json;
 

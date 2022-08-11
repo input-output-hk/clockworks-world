@@ -1,0 +1,17 @@
+dbPassword: ENC[AES256_GCM,data:WquLxKy763NadM+Uh12w7rvGMRsk,iv:yhaxOjkxd+mA6CJsUkyPgnDVszLF5Ehn3LF5nNlN9GI=,tag:XlRYp7pia1a2tKPEAGnVjw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault:
+        - vault_address: https://vault.cw.iog.io
+          engine_path: sops
+          key_name: ops
+          created_at: "2022-08-17T06:58:32Z"
+          enc: vault:v1:oY0o5PyxtTLE5ygUO8mJInmZIi1kgSFj/f8zCbd5CxPH3PH+51UKmmiDGkGl7PGrJs0BbAOHBV1XzClS
+    age: []
+    lastmodified: "2022-08-17T06:58:32Z"
+    mac: ENC[AES256_GCM,data:JOh94amdPP1Bydols6pJomykqJrRse/QVuhlhgPYyHPol+YO319jBeLwmB/vXJ0jMc6UnT2JllWeR2Pk0wdNC/SpHYtVE0FQTwKkQRnj0Du7ewREdw6fKUc185fBm00iZGOMJBH/Cp3KsezPk9zJcvmAUUBCDPLDfSDN8HEiLl8=,iv:FKRF+VfNSWHnBoBGIpq3N6yS7WZGToM1Hz7BdIDabGk=,tag:9Iua+nTSJIa6bqt7Y7ib0g==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.1

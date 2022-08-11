@@ -52,6 +52,21 @@ in {
         (
           lib.forEach
           (
+            (eachRegion {
+              instanceType = "t3a.xlarge";
+              desiredCapacity = 6;
+              volumeSize = 500;
+              modules =
+                defaultModules
+                ++ [
+                  (
+                    bittelib.mkNomadHostVolumesConfig
+                    ["infra-matomo" "infra-matomo-db"]
+                    (n: "/var/lib/nomad-volumes/${n}")
+                  )
+                ];
+              node_class = "development";
+            }) ++
             # (eachRegion {
             #   instanceType = "t3.xlarge";
             #   volumeSize = 500;
