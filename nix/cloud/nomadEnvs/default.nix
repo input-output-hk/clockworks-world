@@ -5,6 +5,7 @@
   infra = {
     database = inputs.bitte-cells.mariadb.nomadJob.default cell.constants.infra;
     matomo = inputs.cells.matomo.jobs.default cell.constants.infra;
+    matterbridge = inputs.cells.matterbridge.jobs.default cell.constants.infra;
   };
 
   prod = {

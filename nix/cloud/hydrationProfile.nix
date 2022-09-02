@@ -13,7 +13,12 @@
     , ...
     }:
     let
+      inherit (inputs) cells;
     in {
+      imports = [
+        (cells.matterbridge.hydrationProfile.workload-policies-matterbridge)
+      ];
+
       # NixOS-level hydration
       # --------------
       cluster = {
