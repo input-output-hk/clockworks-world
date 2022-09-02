@@ -46,7 +46,7 @@
             driver = "docker";
 
             config.image = ociNamer cell.oci-images.matterbridge;
-            env.DEBUG_SLEEP = "600";
+            # env.DEBUG_SLEEP = "600";
 
             resources = {
               memory = 1024;

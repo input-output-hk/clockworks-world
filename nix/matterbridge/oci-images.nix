@@ -15,6 +15,7 @@ in {
     layers = [
       (n2c.buildLayer {deps = [packages.matterbridge];})
     ];
+    contents = [nixpkgs.cacert];
     config.Env = [
       "PATH=${nixpkgs.lib.makeBinPath [
         nixpkgs.bashInteractive
