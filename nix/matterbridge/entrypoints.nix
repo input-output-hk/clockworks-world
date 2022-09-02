@@ -9,7 +9,7 @@ in {
   matterbridge = writeShellApplication {
     name = "entrypoint";
     text = ''
-      exec ${packages.matterbridge}/bin/matterbridge -debug -conf /secrets/config.toml
+      exec ${packages.matterbridge}/bin/matterbridge -conf /secrets/config.toml
     '';
   };
 }
