@@ -1,4 +1,8 @@
 creation_rules:
+  - path_regex: matomo-analytics
+    hc_vault_transit_uri: "https://vault.cw.iog.io/v1/sops/keys/ops"
+  - path_regex: matterbridge
+    hc_vault_transit_uri: "https://vault.cw.iog.io/v1/sops/keys/ops"
   - path_regex: prod
     hc_vault_transit_uri: "https://vault.cw.iog.io/v1/sops/keys/ops"
   - path_regex: infra

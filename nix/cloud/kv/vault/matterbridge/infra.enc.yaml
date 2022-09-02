@@ -1,0 +1,17 @@
+config: ENC[AES256_GCM,data:v+AvQ0HSkD/84yVAoXxVTG+U0YDd4LWLgBAurlQSXkvPNYf7sP78tWYertdgBL3oYhbEkNpEs0xXfSi2TpJirTWzkUaU+NaB2HekM+4PekylkKwxJIsQfhzz5il5D7vm0vEJoa3qFa+wl931Mcxc8uEdCi00dxXyNFwmRg5XxI9OeNpc8fuAcgo1F8nv4432BBxbzLH7FfKfRyQBwrIvLaP7nXlmwjvRw96Sjv4UCKm9hu2IIb2UaYHmSyioGtuQszR0CK5h+UB3c6j9+TzwZS7NAX9695EaNgwnb77mSHYpe0+nFw4lkqMdRldpfPP+HyO2vWUc5Rxn/pvbx/M12tPipnCje5zP9DS61ItNe4ClxZ5MnvX/fIhLtbarP35dHaWj+6fDfbjzmp/0gy+iLz0gkonQeYZHAkzrxbUFkGV7kx+uqZ27Bqy9I5ysYU1+bUZA1U31HXsZLRB/B/SiwlzwbGvdogCkDBmQP+CowgTNtNpDQfodsIZFBA+RmhV0XhdaML3BTJldqxKYs+0n/i+qtGMNpAn0MqMpT0W8mt+3YA9UIjbBDCk4beWCJBmt+dwRDG3pk8Top0LVXKAThHWOYjWoeimMVQbvYw==,iv:K1LxPYUi8J16czu97NaumAEvzmInWZfrpprfMius8Jo=,tag:46UXSOgQUHZFwJCTlET32A==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault:
+        - vault_address: https://vault.cw.iog.io
+          engine_path: sops
+          key_name: ops
+          created_at: "2022-09-02T18:51:12Z"
+          enc: vault:v1:oRppFGBTyVfKupC0EaxP4LJMCf5LZEsSepQR6pafD8i1usIoTxrFUl0ZwGWAlqrIzGLasUhz2FCpnpAH
+    age: []
+    lastmodified: "2022-09-02T18:51:13Z"
+    mac: ENC[AES256_GCM,data:+aXoQsWLNgQbSwA7BHPQyPLltLLXrlZtH7gtQmqy+P0pxYqmm96zZKA3lfdc3e7LouT/ki+7QHCLG/D1nj3q67zTT7cltQyFHl9IzPXSJA8E/yr3SVktxgN3trF9PxKbpVC8hOezex9xyRbAUk6e4O8Bvoov/FS+s+/bZNK0/mk=,iv:eibXpYQ8Kir7KeBGE7TbNFK3h97IQ2J/67iLjcbqwUE=,tag:45E3FZdTOoywWa/UIo2UwA==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.1
