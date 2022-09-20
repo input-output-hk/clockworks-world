@@ -49,7 +49,17 @@ in
     name = "registry.ci.iog.io/matomo";
     maxLayers = 25;
     layers = [
-      (n2c.buildLayer { deps = [ entrypoints.matomo.passthru.matomo ]; })
+      (n2c.buildLayer {
+        deps = [ entrypoints.matomo.passthru.matomo ];
+
+        perms = [
+          {
+            path = entrypoints.matomo.passthru.matomo;
+            regex = ".*";
+            mode = "0777";
+          }
+        ];
+      })
     ];
     contents = [
       bin
