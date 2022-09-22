@@ -107,12 +107,7 @@
               ports = [ "fastcgi" ];
             };
 
-            env = {
-              MATOMO_DATABASE_HOST = "\${NOMAD_ADDR_mysql}";
-              MATOMO_DATABASE_USERNAME = "my-user";
-              MATOMO_DATABASE_PASSWORD = "super-complex-password-34892374982374";
-              MATOMO_DATABASE_DBNAME = "my-matomo";
-            };
+            env.MATOMO_DATABASE_HOST = "\${NOMAD_ADDR_mysql}";
 
             resources = {
               memory = 1024;
