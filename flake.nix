@@ -9,7 +9,7 @@
     bitte-cells.url = "github:input-output-hk/bitte-cells/mariadb";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
-    nixpkgs.follows = "bitte/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     capsules.url = "github:input-output-hk/devshell-capsules";
     capsules.inputs.bitte.follows = "bitte";
   };

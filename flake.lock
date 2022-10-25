@@ -4401,6 +4401,21 @@
     },
     "nixpkgs_50": {
       "locked": {
+        "lastModified": 1666714275,
+        "narHash": "sha256-5Ba4rKMqjQ9e7K6eqdwfWuhQU4HO+8an90WQ3BaiFQM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b410bee3cdea9365afcd9f342839d5b6e51c2df4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_51": {
+      "locked": {
         "lastModified": 1659931296,
         "narHash": "sha256-MYLvZ1pN2DC79uYoPAoqs7PT5jLaA/I0vTtUUyhdE44=",
         "owner": "nixos",
@@ -4834,10 +4849,7 @@
         "capsules": "capsules_2",
         "data-merge": "data-merge_4",
         "n2c": "n2c_3",
-        "nixpkgs": [
-          "bitte",
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_50",
         "std": "std_4"
       }
     },
@@ -5155,7 +5167,7 @@
         "flake-utils": "flake-utils_27",
         "mdbook-kroki-preprocessor": "mdbook-kroki-preprocessor",
         "nixago": "nixago",
-        "nixpkgs": "nixpkgs_50",
+        "nixpkgs": "nixpkgs_51",
         "yants": "yants_7"
       },
       "locked": {
