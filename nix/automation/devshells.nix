@@ -3,6 +3,7 @@
   cell,
 }: let
   inherit (inputs.std) std;
+  inherit (inputs.std.lib) dev;
   inherit (inputs) capsules bitte-cells bitte nixpkgs;
 
   # FIXME: this is a work around just to get access
@@ -40,14 +41,14 @@
     };
   };
 in {
-  dev = std.lib.mkShell {
+  dev = dev.mkShell {
     imports = [
       cwWorld
       capsules.base
       capsules.cloud
     ];
   };
-  ops = std.lib.mkShell {
+  ops = dev.mkShell {
     imports = [
       cwWorld
       capsules.base

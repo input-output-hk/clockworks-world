@@ -1,8 +1,8 @@
 {
   description = "ClockWorks";
   inputs.std.url = "github:divnix/std";
-  inputs.n2c.url = "github:nlewo/nix2container";
-  inputs.data-merge.url = "github:divnix/data-merge";
+  inputs.n2c.follows = "std/n2c";
+  inputs.data-merge.follows = "std/dmerge";
   inputs = {
     # --- Bitte Stack ----------------------------------------------
     bitte.url = "github:input-output-hk/bitte";
@@ -21,21 +21,21 @@
       inherit inputs;
       cellsFrom = ./nix;
       #debug = ["cells" "cloud" "packages"];
-      organelles = [
-        (inputs.std.data "nomadEnvs")
-        (inputs.std.data "constants")
-        (inputs.std.data "alerts")
-        (inputs.std.data "dashboards")
-        (inputs.std.functions "bitteProfile")
-        (inputs.std.functions "oci-images")
-        (inputs.std.installables "packages")
-        (inputs.std.installables "config-data")
-        (inputs.std.functions "hydrationProfile")
-        (inputs.std.functions "devshellProfiles")
+      cellBlocks = with inputs.std.blockTypes; [
+        (data "nomadEnvs")
+        (data "constants")
+        (data "alerts")
+        (data "dashboards")
+        (functions "bitteProfile")
+        (functions "oci-images")
+        (installables "packages")
+        (installables "config-data")
+        (functions "hydrationProfile")
+        (functions "devshellProfiles")
         # just repo automation; std - just integration pending
-        (inputs.std.runnables "jobs")
-        (inputs.std.runnables "entrypoints")
-        (inputs.std.devshells "devshells")
+        (runnables "jobs")
+        (runnables "entrypoints")
+        (devshells "devshells")
       ];
     }
     # soil (TODO: eat up soil)
