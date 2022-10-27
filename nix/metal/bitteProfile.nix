@@ -43,9 +43,9 @@ in {
         defaultModules = [(bitte + "/profiles/client.nix")];
 
         eachRegion = attrs: [
-          (attrs // {region = "eu-central-1";})
-          (attrs // {region = "eu-west-1";})
-          (attrs // {region = "us-east-2";})
+          # (attrs // {region = "eu-central-1";})
+          # (attrs // {region = "eu-west-1";})
+          # (attrs // {region = "us-east-2";})
         ];
       in
         lib.listToAttrs
