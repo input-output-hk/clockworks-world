@@ -26,6 +26,7 @@
       domain = "cw.iog.io";
       kms = "arn:aws:kms:eu-central-1:337774054819:key/abfae3d9-60ee-41ed-a89a-63078cd5ed5d";
       s3Bucket = "iog-clockworks-bitte";
+      s3Tempo = "cw-tempo";
     };
 
     services = {

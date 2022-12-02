@@ -43,7 +43,7 @@ in {
         defaultModules = [(bitte + "/profiles/client.nix")];
 
         eachRegion = attrs: [
-          # (attrs // {region = "eu-central-1";})
+          (attrs // {region = "eu-central-1";})
           # (attrs // {region = "eu-west-1";})
           # (attrs // {region = "us-east-2";})
         ];
@@ -54,19 +54,26 @@ in {
           (
             (eachRegion {
               instanceType = "t3a.xlarge";
-              desiredCapacity = 6;
+              desiredCapacity = 4;
               volumeSize = 500;
               modules =
                 defaultModules
                 ++ [
+                  {
+                    services.nomad.client.meta = {
+                      cardano = "yeah";
+                      patroni = "yeah";
+                    };
+                  }
                   (
                     bittelib.mkNomadHostVolumesConfig
-                    ["infra-matomo" "infra-matomo-db"]
+                    ["infra-database"]
                     (n: "/var/lib/nomad-volumes/${n}")
                   )
                 ];
-              node_class = "development";
-            }) ++
+              node_class = "infra";
+            })
+            ++
             # (eachRegion {
             #   instanceType = "t3.xlarge";
             #   volumeSize = 500;
@@ -161,6 +168,7 @@ in {
           modules = [
             (bitte + /profiles/monitoring.nix)
             {
+              services.monitoring.useTempo = false;
               services.loki.configuration.table_manager = {
                 retention_deletes_enabled = true;
                 retention_period = "28d";
@@ -184,6 +192,7 @@ in {
               services.traefik.acmeDnsCertMgr = false;
               services.traefik.useVaultBackend = true;
               services.traefik.useDockerRegistry = false;
+              services.traefik.enableTracing = false;
             }
           ];
         };
