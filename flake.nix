@@ -6,7 +6,7 @@
   inputs = {
     # --- Bitte Stack ----------------------------------------------
     bitte.url = "github:input-output-hk/bitte";
-    bitte-cells.url = "github:input-output-hk/bitte-cells/mariadb";
+    bitte-cells.url = "github:input-output-hk/bitte-cells";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
     nixpkgs.url = "github:NixOS/nixpkgs";
