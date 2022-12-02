@@ -15,6 +15,7 @@
     inherit (inputs) cells;
   in {
     imports = [
+      (inputs.bitte-cells.patroni.hydrationProfiles.hydrate-cluster ["infra"])
       (cells.matterbridge.hydrationProfile.workload-policies-matterbridge)
     ];
 
@@ -85,11 +86,11 @@
         # Alert attrset
         {
           # Cell Blocks local declared dashboards
-          inherit
-            # (cell.alerts)
-            # clockworks-example-alerts
-            # Upstream alerts which may have downstream deps can be imported here
-            ;
+          # inherit
+          # (cell.alerts)
+          # clockworks-example-alerts
+          # Upstream alerts which may have downstream deps can be imported here
+          # ;
 
           # Upstream alerts not having downstream deps can be directly imported here
           inherit
@@ -105,18 +106,18 @@
             ;
 
           # Patroni not currently used in clockworks
-          # inherit
-          #   (inputs.bitte-cells.patroni.alerts)
-          #   bitte-cells-patroni
-          #   ;
+          inherit
+            (inputs.bitte-cells.patroni.alerts)
+            bitte-cells-patroni
+            ;
         }
         # Dashboard attrset
         {
           # Cell Blocks local declared dashboards
-          inherit
-            # (cell.dashboards)
-            # clockworks-example-dash
-            ;
+          # inherit
+          # (cell.dashboards)
+          # clockworks-example-dash
+          # ;
 
           # Upstream dashboards not having downstream deps can be directly imported here
           inherit
@@ -135,10 +136,10 @@
             ;
 
           # Patroni not currently used in clockworks
-          # inherit
-          #   (inputs.bitte-cells.patroni.dashboards)
-          #   bitte-cells-patroni
-          #   ;
+          inherit
+            (inputs.bitte-cells.patroni.dashboards)
+            bitte-cells-patroni
+            ;
         };
     };
 

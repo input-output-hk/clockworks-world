@@ -1,0 +1,24 @@
+patroniApi: ENC[AES256_GCM,data:OKZK,iv:nmpdCXTrfscwHKcF04mtqcC6PnZExhQyymsnjrWIcVA=,tag:1oP767jgIhTJ18k0VpVTHQ==,type:str]
+patroniApiPass: ENC[AES256_GCM,data:c3ImaF9fzFy/SJPgXG+96m7HVCGADmI/DeL78iaI6VsYEMS3yPOhcjqoOVf6dc9kucjRv42WPA63YeWg+WlWJg==,iv:FyrJYGnFT5d1QillBccK8e9TNj9WtXg2xTJ1gs1IanI=,tag:n6sO5Ew5KBSx1Za0tzciKw==,type:str]
+patroniRepl: ENC[AES256_GCM,data:a7OzKA==,iv:h/VnorXpx9hrO+OTmKKcq9mTPzCt86Hf8J4jz0o12fk=,tag:49mSZ4zGj6OCxXmFbOmXAA==,type:str]
+patroniReplPass: ENC[AES256_GCM,data:kYNNKXdNJB6GFRqm+wJ3OuxbQ8NG2ZPXmLwtFMrb1P00sH1CRBvbDOqmOsrwmE4npPHazRWJbAM5K7VrQj4vYw==,iv:hotmVGFETvYq6U7OuAbb/WyfVBE9pyBwakGuDbIeEhg=,tag:0PQafzrlZ3ajYKA9RysPVw==,type:str]
+patroniRewind: ENC[AES256_GCM,data:+MLpntov,iv:evbT0rwteVktLe4hgje5tHl+KdWTw0pjkK5p61VYW4E=,tag:ocG5YwGWCt/D0PH1T4QNDQ==,type:str]
+patroniRewindPass: ENC[AES256_GCM,data:UmGMaEfNhTB0JVH+AG7KHocpC1FJjuQuw96jRKjb3pWx4x+1ovR2E5Ea7BhxEJqvfp+IQAJWtMZ8gU1EhcBtmA==,iv:4FqHqG3f0Qo0XYHMvTpJjmp+pfKpfLqu/dt6vxEmFsI=,tag:pWnJiosuD8CrQFcugAtE9A==,type:str]
+patroniSuper: ENC[AES256_GCM,data:mgkM,iv:ZrGb9Q9pZlbfRSw5zFrKwANPpKqnnOiBL7ahh5oRlk8=,tag:+ybyAdTIfrnLUB6FbSsUPA==,type:str]
+patroniSuperPass: ENC[AES256_GCM,data:r8KFHEojakMbGFpPRTpPunAXAWASYAYUocUHNpophceflfmEH6Q8Iv6qnbV6mX8cvOxZTUZpZ3ku/k/MI/96/Q==,iv:yvDQKIfxXqIkGUIIoKQa83xtsQUcy1v5xpOBhYY+u6w=,tag:en8HB59SU8GBrr+5/bmNAg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault:
+        - vault_address: https://vault.cw.iog.io
+          engine_path: sops
+          key_name: ops
+          created_at: "2022-12-02T19:48:37Z"
+          enc: vault:v1:YNr8VxINgSKV3fanar+HvUZHuFh90/tHEntErxO9zJpsP3D84YkSHy2nWavRviRN3o4Bn7Xlbjq62vm+
+    age: []
+    lastmodified: "2022-12-02T19:50:02Z"
+    mac: ENC[AES256_GCM,data:Al9HSPT2zdN2lIS2zOBQFhwru4yqvDlburzKIPuhFohK5d0X389aflNkc88bcJ+ofldHI/cTeDWZaLsYkseNCK848GMCAhkuX3MX+AhtTuy+DBd6oNig8HvPqIe+OEdhGVrdZcyC1fphX2sVVhX39wH9YJkb2ECB53sjmoacbe8=,iv:tdu435Dw3nA1nnXOAya8aVUihFG2Qrrw5muBkXUWVIM=,tag:QRj2f13i6Gg06k/4GbnnSA==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3
