@@ -16,7 +16,8 @@
   in {
     imports = [
       (inputs.bitte-cells.patroni.hydrationProfiles.hydrate-cluster ["infra"])
-      (cells.matterbridge.hydrationProfile.workload-policies-matterbridge)
+      cells.matterbridge.hydrationProfile.workload-policies-matterbridge
+      cells.bors.hydrationProfile.workload-policies-bors
     ];
 
     # NixOS-level hydration

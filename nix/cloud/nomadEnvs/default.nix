@@ -6,6 +6,7 @@
     database = inputs.bitte-cells.patroni.nomadCharts.default cell.constants.infra;
     matomo = inputs.cells.matomo.jobs.default cell.constants.infra;
     matterbridge = inputs.cells.matterbridge.jobs.default cell.constants.infra;
+    bors = inputs.cells.bors.jobs.default cell.constants.infra;
   };
 
   prod = {

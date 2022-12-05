@@ -2,7 +2,7 @@
   inputs,
   cell,
 }: {
-# Matterbridge
+  # Matterbridge
   workload-policies-bors = {
     tf.hydrate-cluster.configuration.locals.policies = {
       vault.bors = {

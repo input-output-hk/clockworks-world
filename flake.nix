@@ -27,7 +27,7 @@
         (data "alerts")
         (data "dashboards")
         (functions "bitteProfile")
-        (functions "oci-images")
+        (containers "oci-images")
         (installables "packages")
         (installables "config-data")
         (functions "hydrationProfile")
