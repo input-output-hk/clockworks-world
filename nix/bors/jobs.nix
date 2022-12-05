@@ -8,7 +8,7 @@
     domain,
     ...
   }: let
-    url = "bors.${domain}";
+    url = "bors-ng.aws.iohkdev.io";
     secrets = {
       __toString = _: "kv/bors/${namespace}";
       pem = ".Data.data.integration";
@@ -24,7 +24,7 @@
 
       group.bors = {
         network.mode = "bridge";
-        network.port.bors = {};
+        network.port.bors.static = 4000;
 
         restart = {
           attempts = 5;
@@ -43,7 +43,7 @@
         task.bors = {
           driver = "docker";
 
-          config.image = cell.oci-images.bors.imageRefUnsafe;
+          config.image = "borsng/bors-ng";
           # env.DEBUG_SLEEP = "600";
 
           resources = {
@@ -88,14 +88,12 @@
               check = [
                 {
                   address_mode = "host";
-                  check_restart = [{grace = "1m0s";}];
-                  interval = "30s";
-                  method = "GET";
-                  path = "/health";
+                  interval = "1m0s";
+                  command = "curl";
+                  args = ["localhost:4000/health"];
                   port = "bors";
-                  protocol = "http";
                   timeout = "3s";
-                  type = "http";
+                  type = "script";
                 }
               ];
               name = "${namespace}-bors";
