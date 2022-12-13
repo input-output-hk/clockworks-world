@@ -33,7 +33,7 @@ let
           [General]
           enable_trusted_host_check=0
           [opcache]
-          opcache.memory_consumption = 196
+          opcache.memory_consumption = 1024
           opcache.log_verbosity_level = 4
         '';
         preferLocalBuild = true;

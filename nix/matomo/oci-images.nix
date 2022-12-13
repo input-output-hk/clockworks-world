@@ -81,6 +81,11 @@ in
         regex = ".*";
         mode = "0777";
       }
+      {
+        path = entrypoints.matomo.passthru.matomo;
+        regex = ".*";
+        mode = "0777";
+      }
     ];
   };
 
