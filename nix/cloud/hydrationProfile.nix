@@ -84,7 +84,7 @@
           inputs.bitte-cells._utils.library.mkMonitoring
             # Alert attrset
             {
-              # Organelle local declared dashboards
+              # Cell Blocks local declared dashboards
               inherit
                 # (cell.alerts)
                 # clockworks-example-alerts
@@ -113,7 +113,7 @@
             }
             # Dashboard attrset
             {
-              # Organelle local declared dashboards
+              # Cell Blocks local declared dashboards
               inherit
                 # (cell.dashboards)
                 # clockworks-example-dash

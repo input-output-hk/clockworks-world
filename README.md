@@ -15,7 +15,7 @@ The application is _parasitically_ operationalized in [`./nix`][ops].
 - Cloud (Schedulable Jobs & Cluster Hydration Profiles)
 - Repoautomation (Runnable helpers for daily or sporadic tasks)
 
-This repository defines the following **Organelles**:
+This repository defines the following **Cell Blocks**:
 
 - **Installables**:
   - Packages (flake output: `packages`)
