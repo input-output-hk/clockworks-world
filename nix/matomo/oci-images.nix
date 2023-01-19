@@ -61,7 +61,7 @@ in
         ];
       })
     ];
-    contents = [
+    copyToRoot = [
       bin
       etc
       tmp

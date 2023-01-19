@@ -9,7 +9,7 @@
     bitte-cells.url = "github:input-output-hk/bitte-cells";
     # --------------------------------------------------------------
     # --- Auxiliaries ----------------------------------------------
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:gytis-ivaskevicius/nixpkgs/matomo-update";
     capsules.url = "github:input-output-hk/devshell-capsules";
     capsules.inputs.bitte.follows = "bitte";
   };

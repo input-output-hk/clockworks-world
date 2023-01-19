@@ -4604,15 +4604,16 @@
     },
     "nixpkgs_49": {
       "locked": {
-        "lastModified": 1670003283,
-        "narHash": "sha256-86fo0iTJlepKhJNKiIeJHYghhWitl4u/6cJGRkqSJ64=",
-        "owner": "NixOS",
+        "lastModified": 1674160506,
+        "narHash": "sha256-GfUAY/WHTaWodvGnI2wycsjV672ROmY9y+0FRX/8V3w=",
+        "owner": "gytis-ivaskevicius",
         "repo": "nixpkgs",
-        "rev": "859b5411f733ed417030196f95edc2ef5b7ae130",
+        "rev": "ecb27f1ec11e8077ab7efe7bd0a081510f4d63f0",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "gytis-ivaskevicius",
+        "ref": "matomo-update",
         "repo": "nixpkgs",
         "type": "github"
       }
