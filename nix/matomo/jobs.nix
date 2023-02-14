@@ -44,8 +44,7 @@
 
         group.matomo = {
           network.port.mysql.to = 3306;
-          network.port.http.static = 8080;
-          network.port.fastcgi.static = 9000;
+          network.port.http.static = 80;
           network.mode = "bridge";
 
           restart = {
@@ -84,27 +83,13 @@
 
           ];
 
-          task.nginx = {
-            driver = "docker";
-
-            config = {
-              image = ociNamer cell.oci-images.matomo-nginx;
-              ports = [ "http" ];
-            };
-            env.PHP_ADDRESS = "127.0.0.1:9000";
-
-            resources = {
-              memory = 1024;
-              cpu = 300;
-            };
-          };
 
           task.matomo = {
             driver = "docker";
 
             config = {
-              image = ociNamer cell.oci-images.matomo;
-              ports = [ "fastcgi" ];
+              image = "matomo:4.13.3-apache";
+              ports = [ "http" ];
             };
 
             env.MATOMO_DATABASE_HOST = "\${NOMAD_ADDR_mysql}";
@@ -118,34 +103,11 @@
 
 
             volume_mount = {
-              destination = "/alloc/matomo";
+              destination = "/var/www/html";
               volume = "${namespace}-matomo";
             };
           };
 
-          volume = {
-            "${namespace}-matomo" = {
-              source = "${namespace}-matomo";
-              type = "host";
-            };
-            "${namespace}-matomo-db" = {
-              source = "${namespace}-matomo-db";
-              type = "host";
-            };
-          };
-
-          task.mail = {
-            driver = "docker";
-
-            config = {
-              image = "bytemark/smtp";
-            };
-
-            resources = {
-              memory = 200;
-              cpu = 300;
-            };
-          };
 
 
           task.mysql = {
@@ -180,6 +142,19 @@
               }
             ];
           };
+
+          volume = {
+            "${namespace}-matomo" = {
+              source = "${namespace}-matomo";
+              type = "host";
+            };
+            "${namespace}-matomo-db" = {
+              source = "${namespace}-matomo-db";
+              type = "host";
+            };
+          };
+
+
         };
       };
     };
