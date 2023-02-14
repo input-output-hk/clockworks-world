@@ -7,16 +7,21 @@
     let
       inherit (inputs) data-merge cells;
       ociNamer = oci: builtins.unsafeDiscardStringContext "${oci.imageName}:${oci.imageTag}";
+      check_restart = {
+        limit = 2;
+        grace = "60s";
+        ignore_warnings = false;
+      };
 
       mkServiceMeta = { namespace, domain, jobname }: {
         address_mode = "auto";
         check = [
           {
-            address_mode = "host";
-            interval = "1m0s";
-            port = "http";
+            type = "http";
+            path = "/";
+            interval = "30s";
             timeout = "2s";
-            type = "tcp";
+            inherit check_restart;
           }
         ];
         name = "${namespace}-nginx";
