@@ -15,16 +15,16 @@
 
       mkServiceMeta = { namespace, domain, jobname }: {
         address_mode = "auto";
-        check = [
-          {
-            type = "http";
-            path = "/";
-            interval = "30s";
-            timeout = "2s";
-            inherit check_restart;
-          }
-        ];
-        name = "${namespace}-nginx";
+        #check = [
+        #  {
+        #    type = "http";
+        #    path = "/";
+        #    interval = "30s";
+        #    timeout = "2s";
+        #    inherit check_restart;
+        #  }
+        #];
+        name = "${namespace}-matomo";
         port = "http";
         tags = [
           "${namespace}"
@@ -67,19 +67,19 @@
           };
 
           service = [
-            {
-              name = "mysql";
-              address_mode = "auto";
-              port = "mysql";
-              check = [
-                {
-                  type = "tcp";
-                  port = "mysql";
-                  interval = "10s";
-                  timeout = "2s";
-                }
-              ];
-            }
+            #{
+            #  name = "mysql";
+            #  address_mode = "auto";
+            #  port = "mysql";
+            #  check = [
+            #    {
+            #      type = "tcp";
+            #      port = "mysql";
+            #      interval = "10s";
+            #      timeout = "2s";
+            #    }
+            #  ];
+            #}
             (mkServiceMeta {
               inherit namespace;
               domain = "cw.iog.io";
@@ -93,7 +93,7 @@
             driver = "docker";
 
             config = {
-              image = "matomo:4.13.3-apache";
+              image = "matomo:4.15.0-apache";
               ports = [ "http" ];
             };
 
