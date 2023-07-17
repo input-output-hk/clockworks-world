@@ -100,8 +100,8 @@
             env.MATOMO_DATABASE_HOST = "\${NOMAD_ADDR_mysql}";
 
             resources = {
-              memory = 1024;
-              cpu = 1000;
+              memory = 4096;
+              cpu = 2000;
             };
 
             vault.policies = [ "nomad-cluster" "matomo-analytics" ];
@@ -124,8 +124,8 @@
             };
 
             resources = {
-              memory = 1024;
-              cpu = 300;
+              memory = 8192;
+              cpu = 3000;
             };
 
             vault.policies = [ "nomad-cluster" "matomo-analytics" ];
